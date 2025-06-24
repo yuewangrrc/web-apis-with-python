@@ -17,7 +17,10 @@ def search():
     2. Seach for the word on Google and display results
     """
     args = request.args.get("q")
-    return redirect(f"https://www.google.com/search?q={args}")
+    if 'lucky' in  request.args:
+        return redirect(f"https://www.google.com/search?q={args}&btnI=1")
+    else:
+        return redirect(f"https://www.google.com/search?q={args}")
 
 if __name__ == "__main__":
     app.run()
