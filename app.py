@@ -35,11 +35,12 @@ def dictionary():
         definition = match_exact(word)
         if definition:
             response["words"].append({"word": word, "definition": definition})
-        definition = match_like(word)
-        if definition:
-            response["words"].append({"word": word, "definition": definition})
         else:
-            response["words"].append({"word": word, "definition": "No matches found"})
+            definition = match_like(word)
+            if definition:
+                response["words"].append({"word": word, "definition": definition})
+            else:
+                response["words"].append({"word": word, "definition": "No matches found"})
     return response
     # definition = match_exact(word)
     # if definition:
